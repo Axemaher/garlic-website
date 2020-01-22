@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
-import MenuButton from '../components/MenuButton'
-import { size } from '../utils/media'
-import { colors } from '../utils/colors'
+import MenuButton from '../Menu/MenuButton'
+import { size } from '../../utils/media'
+import { colors } from '../../utils/colors'
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 
 const StyledMenuWrapper = styled.header`
+    z-index: 2;
     position: fixed;
     top: 0;
     left: 0;
@@ -21,10 +22,10 @@ const StyledMenuWrapper = styled.header`
 const StyledNav = styled.nav`
     z-index: 2;
     width: 100vw;
-    padding: 0 10px;
+    padding: 0 20px;
     /* max-width: 1400px;
     margin: 0 auto; */
-    background-color: ${({ theme }) => theme.colors.navBG};
+    background-color: ${({ theme }) => theme.colors.navBackground};
     font-size: 3em;
     text-align: center;
     transition: .2s ease-in-out;
@@ -59,6 +60,12 @@ const StyledLink = styled(Link)`
     text-decoration: none;
     color: ${({ theme }) => theme.colors.font};
     display: inline-block;
+    transition: all .2s;
+    border-bottom: 2px solid ${({ theme }) => theme.colors.navBackground};
+    &:hover{
+        color: ${({ theme }) => theme.colors.navActiveElement};
+        border-bottom: 2px solid ${({ theme }) => theme.colors.navActiveElement};
+    }
 `;
 
 const StyledNavElementSocialIcons = styled(StyledNavGroup)`
@@ -119,7 +126,13 @@ const Menu = () => {
                 <StyledNavGroup>
                     {data.site.siteMetadata.menuLinks.map(e =>
                         <StyledNavElement key={e.name}>
-                            <StyledLink to={e.link} activeStyle={{ color: `${colors.active}` }}>{e.name}</StyledLink>
+                            <StyledLink
+                                to={e.link}
+                                activeStyle={{
+                                    color: `${colors.navActiveElement}`,
+                                    borderBottom: `2px solid ${colors.navActiveElement}`
+                                }}
+                            >{e.name}</StyledLink>
                         </StyledNavElement>)}
                     <StyledNavElementSocialIcons>
                         <StyledSocialElement>

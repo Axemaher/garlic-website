@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 const StyledMenuButton = styled.button`
-    background-color: transparent;
+    background-color: ${({ theme }) => theme.colors.navButtonBackground};
     border: none;
     position: fixed;
     top: 0;
@@ -23,15 +23,17 @@ const StyledMenuButton = styled.button`
 const StyledNavIconSpan = styled.span`
     display: block;
     position: absolute;
-    height: 6px;
+    height: 5px;
     width: 100%;
-    background-color: ${({ open }) => open ? 'red' : 'gray'};
+    background-color: ${({ open }) => open ?
+        ({ theme }) => theme.colors.navButtonClose :
+        ({ theme }) => theme.colors.navButton};
     border-radius: 9px;
     opacity: 1;
     left: 0;
     top: 0;
     transform: rotate(0deg);
-    transition: .25s ease-in-out;
+    transition: .15s ease-in-out;
     &:nth-child(1){
         top: ${({ open }) => open && '0px'};
         transform: ${({ open }) => open && 'rotate(45deg)'};
