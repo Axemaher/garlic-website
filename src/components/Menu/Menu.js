@@ -61,7 +61,7 @@ const StyledLink = styled(Link)`
     color: ${({ theme }) => theme.colors.font};
     display: inline-block;
     transition: all .2s;
-    border-bottom: 2px solid ${({ theme }) => theme.colors.navBackground};
+    border-bottom: 2px solid transparent;
     &:hover{
         color: ${({ theme }) => theme.colors.navActiveElement};
         border-bottom: 2px solid ${({ theme }) => theme.colors.navActiveElement};
@@ -94,6 +94,7 @@ const StyledSocialIcon = styled(Img)`
 const Menu = () => {
 
     const [open, setOpen] = useState(window.screen.width > size.tablet.slice(0, -2) ? true : false)
+    // const [open, setOpen] = useState(true)
 
     const data = useStaticQuery(graphql`
     query menuLinks {

@@ -4,14 +4,21 @@ import HomeDelivery from '../../images/icons/homeDelivery.svg'
 import FastDelivery from '../../images/icons/fastDelivery.svg'
 import Warehouse from '../../images/icons/warehouse.svg'
 import Quality from '../../images/icons/quality.svg'
+import Experience from '../../images/icons/experience.svg'
 import H2 from '../H2/H2'
+import BackgroundImage from 'gatsby-background-image'
+import { useStaticQuery, graphql } from "gatsby"
 
 
-
-const StyledSectionQualityTiles = styled.section`
+const StyledSectionQualityTiles = styled(BackgroundImage)`
   padding: 100px 0 100px 0;
-  background-color: ${({ theme }) => theme.colors.sectionBackground1};
+  /* background-color: ${({ theme }) => theme.colors.sectionBackground3}; */
   text-align: center;
+  &::before, &::after{
+    filter: opacity(
+      ${({ lowOpacity }) => lowOpacity && '.1'}
+    )
+  }
 `;
 
 const StyledTilesWrapper = styled.div`
@@ -36,7 +43,7 @@ const StyledTileImage = styled.img`
 `;
 
 const StyledTile = styled.div`
-  background-color: ${({ theme }) => theme.colors.qualityTilesBackground};
+  /* background-color: ${({ theme }) => theme.colors.qualityTilesBackground}; */
   width: 200px;
   height: 200px;
   margin: 15px;
@@ -58,11 +65,25 @@ const StyledTileDescription = styled.span`
 `;
 
 const QualityTiles = () => {
+
+  const data = useStaticQuery(graphql`
+  query {
+    descriptionBG: file(relativePath: { eq: "sectionBG1.jpg" }) {
+      childImageSharp {
+        fluid(quality: 100) {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+  }
+`)
+
+  const homeBG = data.descriptionBG.childImageSharp.fluid
+
   return (
-    <StyledSectionQualityTiles>
+    <StyledSectionQualityTiles fluid={homeBG} lowOpacity>
       <H2>KUPUJĄC U NAS MASZ GWARANCJĘ</H2>
       <StyledTilesWrapper>
-
         <StyledTile>
           <StyledTileImage src={Quality} />
           <StyledTileTitle>wysoka jakość</StyledTileTitle>
@@ -85,11 +106,19 @@ const QualityTiles = () => {
         </StyledTile>
 
         <StyledTile>
+          <StyledTileImage src={Experience} />
+          <StyledTileTitle>doświadczenie</StyledTileTitle>
+          <StyledTileDescription>mamy długoletnie doświadczenie w sprzedaży tego produktu
+</StyledTileDescription>
+        </StyledTile>
+
+        <StyledTile>
           <StyledTileImage src={FastDelivery} />
           <StyledTileTitle>szybka dostawa</StyledTileTitle>
           <StyledTileDescription>posiadamy własne samochody dzięki którym dostarczymy Twoje zamówienia
 </StyledTileDescription>
         </StyledTile>
+
       </StyledTilesWrapper>
     </StyledSectionQualityTiles>
   );

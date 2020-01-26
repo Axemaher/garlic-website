@@ -3,9 +3,9 @@ import Layout from '../Layout/layout'
 import styled from 'styled-components'
 import BackgroundImage from 'gatsby-background-image'
 import { useStaticQuery, graphql } from "gatsby"
-import QualityTiles from '../components/QualityTiles/QualityTiles'
 import ShortOffer from '../components/ShortOffer/ShortOffer'
 import Button from '../components/Button/Button'
+import DescriptionTiles from '../components/DescriptionTiles/DescriptionTiles'
 
 const StyledSectionWithBackground = styled(BackgroundImage)`
   display: flex;
@@ -77,42 +77,10 @@ const IndexPage = () => {
           <Button to={'/contact'}>skontaktuj się</Button>
         </StyledLinkGroup>
       </StyledSectionWithBackground>
-      <QualityTiles />
       <ShortOffer />
+      <DescriptionTiles />
     </Layout>
   )
 }
 
 export default IndexPage
-
-
-// <div class="offer-section">
-// <h2>Offer</h2>
-// <div class="section-icon"></div>
-// <div class="offer">
-//    <div class="offer-element">
-//      <div class="side">
-//        <div class="offer-desc-wrapper">
-//          <span class="offer-title">Czosnek niedźwiedzi</span>
-//        <span class="offer-description">Najlepszy do potraw</span>
-//        <a class="offer-link" href="#">zobacz więcej</a>
-//        </div>
-//      </div>
-//      <div class="side">
-//        <img class="offer-image" src="https://www.freepngimg.com/thumb/garlic/1-2-garlic-png-thumb.png" alt="">
-//      </div>
-//    </div>
-//    <div class="offer-element">
-//      <div class="side">
-//        <div class="offer-desc-wrapper">
-//          <span class="offer-title">Czosnek niedźwiedzi</span>
-//        <span class="offer-description">Najlepszy do potraw</span>
-//        <a class="offer-link" href="#">zobacz więcej</a>
-//        </div>
-//      </div>
-//      <div class="side">
-//        <img class="offer-image" src="https://www.freepngimg.com/thumb/garlic/1-2-garlic-png-thumb.png" alt="">
-//      </div>
-//    </div>
-// </div>
-// </div>
