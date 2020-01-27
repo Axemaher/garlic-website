@@ -33,7 +33,6 @@ export const colors = {
     shortOfferDescriptionBackground: '#ffffffba',
 
     //table
-    tableRow1: 'red',
     tableRow1: '#ffffff',
     tableBackground: 'white',
 

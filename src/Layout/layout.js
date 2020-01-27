@@ -5,9 +5,7 @@ import Menu from '../components/Menu/Menu'
 
 const GlobalStyle = createGlobalStyle`
   body {
-    @import url('https://fonts.googleapis.com/css?family=Francois+One&display=swap');
-    /* font-family: 'Montserrat', sans-serif; */
-    font-family: 'Francois One', sans-serif;
+    font-family: 'francois one', sans-serif;
   }
   *, *::before, *::after{
     box-sizing: border-box;

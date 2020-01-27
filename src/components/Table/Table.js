@@ -42,7 +42,7 @@ const StyledTd = styled.td`
   background: ${({ theme }) => theme.colors.tableBackground};
   text-align: left;
   vertical-align: middle;
-  font-size:  .8em;
+  font-size: .8em;
   padding: 5px;
   @media ${({ theme }) => theme.device.laptop}{
     font-size:  1em;
@@ -66,9 +66,6 @@ const StyledTr = styled.tr`
     background:#EBEBEB;
   }
 `;
-
-
-
 
 const StyledIco = styled.div`
   width: 100%;

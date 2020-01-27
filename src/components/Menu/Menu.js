@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
 import MenuButton from '../Menu/MenuButton'
@@ -6,6 +6,7 @@ import { size } from '../../utils/media'
 import { colors } from '../../utils/colors'
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
+import window from 'global'
 
 const StyledMenuWrapper = styled.header`
     z-index: 2;
@@ -34,6 +35,7 @@ const StyledNav = styled.nav`
         display: flex;
         justify-content: space-between;
         font-size: 2em;
+        transform: translateY(0);
     }
 `;
 
@@ -92,9 +94,8 @@ const StyledSocialIcon = styled(Img)`
 `;
 
 const Menu = () => {
-
-    const [open, setOpen] = useState(window.screen.width > size.tablet.slice(0, -2) ? true : false)
-    // const [open, setOpen] = useState(true)
+    const screenWIdth = window.innerWidth
+    const [open, setOpen] = useState(screenWIdth > size.tablet.slice(0, -2) ? true : false)
 
     const data = useStaticQuery(graphql`
     query menuLinks {
