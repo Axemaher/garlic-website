@@ -56,7 +56,7 @@ const StyledTileDescriptionWrapper = styled.div`
   display: flex;
   flex-direction: column;
   text-align: left;
-  color: ${({ theme }) => theme.colors.fontPrimary};
+  color: ${({ theme }) => theme.colors.fontBright};
 `;
 
 const StyledTileDescription = styled.span`
@@ -80,8 +80,8 @@ const DescriptionTiles = () => {
   const homeBG = data.descriptionBG.childImageSharp.fluid
 
   return (
-    <StyledSectionDescriptionTiles fluid={homeBG} lowOpacity>
-      <H2 primaryColor>CZOSNEK NAJWYŻSZEJ JAKOŚCI</H2>
+    <StyledSectionDescriptionTiles fluid={homeBG} lowOpacity={false}>
+      <H2 fontBright>CZOSNEK NAJWYŻSZEJ JAKOŚCI</H2>
       <StyledTilesWrapper>
 
         <StyledTile>

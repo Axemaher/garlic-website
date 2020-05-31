@@ -55,36 +55,39 @@ const StyledImage = styled(Img)`
 const OfferPage = () => {
 
   const data = useStaticQuery(graphql`
-    query offerImages {
-      offerImage: file(relativePath: { eq: "shortOffer1.jpg" }) {
-        childImageSharp {
-          fluid(maxWidth: 300) {
-            ...GatsbyImageSharpFluid
+  query offerDescription {
+    offerDescription: allContentfulProdukty {
+      edges {
+        node {
+          productName
+          productImage {
+            fluid {
+              base64
+              srcWebp
+              srcSetWebp
+            }
+          }
+           productDesc{
+            productDesc
           }
         }
       }
     }
-  `)
-
-  const offerImage = data.offerImage.childImageSharp.fluid
+  }
+`);
 
   return (
     <Layout>
       <StyledSectionOffer>
         <PageTitle colorFilter={colors.fontPrimary}>OFERTA</PageTitle>
         <StyledOfferWrapper>
-          <StyledOfferElement>
-            <StyledImage fluid={offerImage} />
-            <StyledName>Biały czosnek tradycyjny</StyledName>
-            <StyledDescription>Jest to bardzo popularny rodzaj czosnku w każdym kraju, dzięki rustykalnej, odpornej i soczystej naturze, a także doskonałej ochronie.
-            Ma znaczący zapach, przyjemny smak i średnie do dużych rozmiarów od 10 do 12 goździków.</StyledDescription>
-          </StyledOfferElement>
-          <StyledOfferElement>
-            <StyledImage fluid={offerImage} />
-            <StyledName>Czosnek fioletowy</StyledName>
-            <StyledDescription>Ze względu na wysoką jakość i intensywny smak czosnek Morado jest jedną z najbardziej cenionych odmian na rynku krajowym i międzynarodowym.
-            Ma intensywny zapach, pikantny smak i średnią wielkość od 8 do 10 goździków.</StyledDescription>
-          </StyledOfferElement>
+          {data.offerDescription.edges.map(el =>
+            <StyledOfferElement>
+              <StyledImage fluid={el.node.productImage.fluid} />
+              <StyledName>{el.node.productName}</StyledName>
+              <StyledDescription>{el.node.productDesc.productDesc}</StyledDescription>
+            </StyledOfferElement>
+          )}
         </StyledOfferWrapper>
       </StyledSectionOffer>
       <Table />

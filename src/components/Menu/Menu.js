@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
 import MenuButton from '../Menu/MenuButton'
@@ -7,6 +7,7 @@ import { colors } from '../../utils/colors'
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 import window from 'global'
+// import Logo from '../../images/logo.png'
 
 const StyledMenuWrapper = styled.header`
     z-index: 2;
@@ -92,6 +93,29 @@ const StyledSocialIcon = styled(Img)`
         width: 25px;
     }
 `;
+const StyledLogoIco = styled(Img)`
+    width: 40px;
+    @media ${({ theme }) => theme.device.tablet} {
+        width: 25px;
+    }
+`;
+
+const StyledLogoIcoWrapper = styled.div`
+    background-color: ${({ theme }) => theme.colors.buttonBackgroundSecondary};
+    padding: 6px 9px;
+    border-radius: 100%;
+    margin-right: 3px;
+`;
+
+const StyledLogoRow = styled(StyledLink)`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:hover{
+        border-bottom: 2px solid transparent;
+        color: ${({ theme }) => theme.colors.navActiveElement};
+    }
+`;
 
 const Menu = () => {
     const screenWIdth = window.innerWidth
@@ -113,16 +137,24 @@ const Menu = () => {
             ...GatsbyImageSharpFluid
           }
         }
+      },
+      logoIco: file(relativePath: { eq: "icons/logoIco.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 40) {
+            ...GatsbyImageSharpFluid
+          }
+        }
       }
     }
   `)
+    console.log(data)
     return (
         <StyledMenuWrapper open={open}>
             <MenuButton handleOpen={setOpen} open={open}></MenuButton>
             <StyledNav open={open}>
                 <StyledNavGroup>
                     <StyledNavElement>
-                        <StyledLink to='/'>logo</StyledLink>
+                        <StyledLogoRow to='/'><StyledLogoIcoWrapper><StyledLogoIco fluid={data.logoIco.childImageSharp.fluid} /></StyledLogoIcoWrapper>CZOSNEK24H</StyledLogoRow>
                     </StyledNavElement>
                 </StyledNavGroup>
                 <StyledNavGroup>
@@ -138,7 +170,7 @@ const Menu = () => {
                         </StyledNavElement>)}
                     <StyledNavElementSocialIcons>
                         <StyledSocialElement>
-                            <StyledSocialLink href='#'>
+                            <StyledSocialLink href='https://www.facebook.com/Czosnek24h-103579837930357/?eid=ARDUKy-SgipmBpaVC32MViDd3lplGDAcVM-YVBsYYcjS8zOmgfQhnU4WOyJPzhsLcV9pOfMNzx25X9ni'>
                                 <StyledSocialIcon fluid={data.fbIco.childImageSharp.fluid} />
                             </StyledSocialLink>
                         </StyledSocialElement>

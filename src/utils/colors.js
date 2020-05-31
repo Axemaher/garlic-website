@@ -15,7 +15,7 @@ export const colors = {
     navActiveElement: '#923159',
 
     //nav button
-    navButtonBackground: 'transparent',
+    navButtonBackground: 'rgba(255, 255, 255, 0.5)',
     navButtonClose: 'red',
     navButton: '#923159',
 
@@ -38,5 +38,7 @@ export const colors = {
 
 
     globalBackground: '#ffffff',
-    svgIcons: '#923159',
+    svgIcons: '#ffffff',
+
+    transparent: 'transparent',
 }

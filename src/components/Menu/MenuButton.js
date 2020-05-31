@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 const StyledMenuButton = styled.button`
-    background-color: ${({ theme }) => theme.colors.navButtonBackground};
+    background-color: ${({ theme }) => theme.colors.transparent};
     border: none;
     position: fixed;
     top: 0;
@@ -17,6 +17,16 @@ const StyledMenuButton = styled.button`
     z-index: 3;
     @media ${({ theme }) => theme.device.tablet} {
         display: none;
+    }
+    &::before{
+        content: "";
+        width: 80px;
+        height: 80px;
+        background-color:${({ theme }) => theme.colors.navButtonBackground};
+        position: absolute;
+        left: -15px;
+        top: -20px;
+        border-radius: 100%;
     }
 `;
 

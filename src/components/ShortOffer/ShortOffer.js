@@ -37,7 +37,8 @@ const StyledOfferElementWithBackground = styled(BackgroundImage)`
 
 const StyledOfferDescriptionWrapper = styled.div`
   padding: 10px;
-  background-color: ${({ theme }) => theme.colors.shortOfferDescriptionBackground};
+  background: linear-gradient(90deg, rgba(255,255,255,0.6) 72%, rgba(255,255,255,0) 100%);
+  height: 100%;
   display: flex;
   flex-direction: column;
   text-align: left;
@@ -56,47 +57,40 @@ const StyledOfferDescription = styled.span`
 
 const ShortOffer = () => {
   const data = useStaticQuery(graphql`
-    query images {
-      shortOffer1: file(relativePath: { eq: "shortOffer1.jpg" }) {
-        childImageSharp {
-          fluid(maxWidth: 600) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      shortOffer2: file(relativePath: { eq: "shortOffer2.jpg" }) {
-        childImageSharp {
-          fluid(maxWidth: 600) {
-            ...GatsbyImageSharpFluid
+    query products {
+      products: allContentfulProdukty {
+        edges {
+          node {
+            productName
+            productImage {
+              fluid {
+                base64
+                tracedSVG
+                srcWebp
+                srcSetWebp
+              }
+            }
+             productDesc{
+              productDesc
+            }
           }
         }
       }
     }
-  `)
-  const shortOffer1Bg = data.shortOffer1.childImageSharp.fluid
-  const shortOffer2Bg = data.shortOffer2.childImageSharp.fluid
-
+  `);
   return (
     <StyledSectionShortOffer>
       <H2>NAJLEPSZE PRODUKTY</H2>
       <StyledOfferWrapper>
-
-        <StyledOfferElementWithBackground fluid={shortOffer1Bg} >
-          <StyledOfferDescriptionWrapper>
-            <StyledOfferTitle>Czosnek niedźwiedzi</StyledOfferTitle>
-            <StyledOfferDescription>Najlepszy do potraw</StyledOfferDescription>
-            <Button primary="true" big="true" to={'/offer'}>zobacz więcej</Button>
-          </StyledOfferDescriptionWrapper>
-        </StyledOfferElementWithBackground>
-
-        <StyledOfferElementWithBackground fluid={shortOffer2Bg} >
-          <StyledOfferDescriptionWrapper>
-            <StyledOfferTitle>Czosnek niedźwiedzi</StyledOfferTitle>
-            <StyledOfferDescription>Najlepszy do potraw</StyledOfferDescription>
-            <Button primary="true" big="true" to={'/offer'}>Zobacz więcej</Button>
-          </StyledOfferDescriptionWrapper>
-        </StyledOfferElementWithBackground>
-
+        {data.products.edges.map((el, i) =>
+          <StyledOfferElementWithBackground key={i} fluid={el.node.productImage.fluid} >
+            <StyledOfferDescriptionWrapper>
+              <StyledOfferTitle>{el.node.productName}</StyledOfferTitle>
+              <StyledOfferDescription>{el.node.productDesc.productDesc}</StyledOfferDescription>
+              <Button primary="true" big="true" to={'/offer'}>zobacz więcej</Button>
+            </StyledOfferDescriptionWrapper>
+          </StyledOfferElementWithBackground>
+        )}
       </StyledOfferWrapper>
     </StyledSectionShortOffer>
   );

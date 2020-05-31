@@ -8,6 +8,7 @@ const StyledPageTitleWrapper = styled.div`
   height: 130px;
   margin-bottom: 50px;
   background-color: ${({ colorFilter }) => colorFilter};
+  letter-spacing: 5px;
   @media ${({ theme }) => theme.device.tablet}{
     height: 230px;
     margin-bottom: 50px;
@@ -21,11 +22,11 @@ const StyledPageTitleWithBackground = styled(BackgroundImage)`
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  &::before, &::after{
+  /* &::before, &::after{
     filter: opacity(
       ${({ darken }) => darken ? '60%' : '.2'}
     )
-  }
+  } */
   @media ${({ theme }) => theme.device.tablet}{
     height: 230px;
     margin-bottom: 50px;
@@ -43,7 +44,7 @@ const PageTitle = ({ children, colorFilter }) => {
 
   const data = useStaticQuery(graphql`
     query {
-      titleBG: file(relativePath: { eq: "homeBG.jpg" }) {
+      titleBG: file(relativePath: { eq: "pageTitle.jpg" }) {
         childImageSharp {
           fluid(quality: 100, maxHeight: 300) {
             ...GatsbyImageSharpFluid_withWebp

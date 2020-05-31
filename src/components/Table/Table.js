@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
+import { useStaticQuery, graphql } from "gatsby"
+import BackgroundImage from 'gatsby-background-image'
 
 const StyledSectionTables = styled.section`
   padding: 100px 0 100px 0;
@@ -67,102 +69,65 @@ const StyledTr = styled.tr`
   }
 `;
 
-const StyledIco = styled.div`
+const StyledIco = styled(BackgroundImage)`
   width: 100%;
   height: 100%;
-  background-image: url('http://ressources.jardinage.eu/images/article/les-gousses-d-ail.jpg');
   background-size: cover;
   background-position: center;
 `;
 
 
 const Table = () => {
+
+  const data = useStaticQuery(graphql`
+  query packagingAndPrices {
+    packagingAndPrices:   allContentfulProdukty {
+      edges {
+        node {
+          productName
+          offer {
+            garlicType
+            packageImage {
+              fluid(maxHeight: 120) {
+                base64
+                srcWebp
+                srcSetWebp
+              }
+            }
+            packageDesc
+            price
+          }
+        }
+      }
+    }
+  }
+`);
+
+
   return (
     <StyledSectionTables>
       <StyledTablesWrapper>
-        <StyledTable>
-          <thead>
-            <tr>
-              <StyledTh colSpan={3}>Czosnek tradycyjny</StyledTh>
-            </tr>
-          </thead>
-          <tbody>
-            <StyledTr>
-              <StyledTdFirst>
-                <StyledIco />
-              </StyledTdFirst>
-              <StyledTd>worek siatkowy - 1, 2, lub 3 główki czosnku - ok 100g</StyledTd>
-              <StyledTdLast>5zł</StyledTdLast>
-            </StyledTr>
+        {data.packagingAndPrices.edges.map(el =>
+          <StyledTable>
+            <thead>
+              <tr>
+                <StyledTh colSpan={3}>{el.node.productName}</StyledTh>
+              </tr>
+            </thead>
+            <tbody>
+              {el.node.offer.map(offer =>
+                <StyledTr>
+                  <StyledTdFirst>
+                    <StyledIco fluid={offer.packageImage.fluid} />
+                  </StyledTdFirst>
+                  <StyledTd>{offer.packageDesc}</StyledTd>
+                  <StyledTdLast>{offer.price.toFixed(2)}</StyledTdLast>
+                </StyledTr>
+              )}
 
-            <StyledTr>
-              <StyledTdFirst>
-                <StyledIco />
-              </StyledTdFirst>
-              <StyledTd>worek siatkowy - 1, 2, lub 3 główki czosnku - ok 100g</StyledTd>
-              <StyledTdLast>5zł</StyledTdLast>
-            </StyledTr>
-
-            <StyledTr>
-              <StyledTdFirst>
-                <StyledIco />
-              </StyledTdFirst>
-              <StyledTd>worek siatkowy - 1, 2, lub 3 główki czosnku - ok 100g</StyledTd>
-              <StyledTdLast>5zł</StyledTdLast>
-            </StyledTr>
-
-            <StyledTr>
-              <StyledTdFirst>
-                <StyledIco />
-              </StyledTdFirst>
-              <StyledTd>worek siatkowy - 1, 2, lub 3 główki czosnku - ok 100g</StyledTd>
-              <StyledTdLast>5zł</StyledTdLast>
-            </StyledTr>
-
-          </tbody>
-        </StyledTable>
-
-        <StyledTable>
-          <thead>
-            <tr>
-              <StyledTh colSpan={3}>Czosnek tradycyjny</StyledTh>
-            </tr>
-          </thead>
-          <tbody>
-            <StyledTr>
-              <StyledTdFirst>
-                <StyledIco />
-              </StyledTdFirst>
-              <StyledTd>worek siatkowy - 1, 2, lub 3 główki czosnku - ok 100g</StyledTd>
-              <StyledTdLast>5zł</StyledTdLast>
-            </StyledTr>
-
-            <StyledTr>
-              <StyledTdFirst>
-                <StyledIco />
-              </StyledTdFirst>
-              <StyledTd>worek siatkowy - 1, 2, lub 3 główki czosnku - ok 100g</StyledTd>
-              <StyledTdLast>5zł</StyledTdLast>
-            </StyledTr>
-
-            <StyledTr>
-              <StyledTdFirst>
-                <StyledIco />
-              </StyledTdFirst>
-              <StyledTd>worek siatkowy - 1, 2, lub 3 główki czosnku - ok 100g</StyledTd>
-              <StyledTdLast>5zł</StyledTdLast>
-            </StyledTr>
-
-            <StyledTr>
-              <StyledTdFirst>
-                <StyledIco />
-              </StyledTdFirst>
-              <StyledTd>worek siatkowy - 1, 2, lub 3 główki czosnku - ok 100g</StyledTd>
-              <StyledTdLast>5zł</StyledTdLast>
-            </StyledTr>
-
-          </tbody>
-        </StyledTable>
+            </tbody>
+          </StyledTable>
+        )}
       </StyledTablesWrapper>
     </StyledSectionTables>
   );

@@ -70,13 +70,15 @@ const AboutPage = () => {
           <StyledImage fluid={aboutImage} />
           <StyledDescriptionWrapper>
             <StyledDescription>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolore, soluta! Deleniti molestiae iste reiciendis assumenda expedita rerum, veritatis ad quidem. Asperiores modi veniam iure incidunt consectetur ullam ipsum, praesentium ratione.
+              Oferujemy naszym klientom wysoką jakość czosnku, rozsądną i konkurencyjną cenę, terminową i ciągłą dostawę.
+              Profesjonalnie podchodzimy do każdego klienta,  cechuje nas szczerość, jasne relacje oraz elastycznie dostosowujemy się do okoliczności i zmian na rynku
             </StyledDescription>
             <StyledDescription>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolore, soluta! Deleniti molestiae iste reiciendis assumenda expedita rerum, veritatis ad quidem. Asperiores modi veniam iure incidunt consectetur ullam ipsum, praesentium ratione.
+              Prowadzimy sprzedaż detaliczną i hurtową z możliwością dowozu towaru do klienta naszymi samochodami.
+              Dzięki pozyskanemu doświadczeniu w branży dokładnie wiemy czego oczekuje klient.
             </StyledDescription>
             <StyledDescription>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolore, soluta! Deleniti molestiae iste reiciendis assumenda expedita rerum, veritatis ad quidem. Asperiores modi veniam iure incidunt consectetur ullam ipsum, praesentium ratione.
+              Przez cały czas jesteśmy mocno zaangażowani w przygotowanie towaru najwyższej jakości.
             </StyledDescription>
           </StyledDescriptionWrapper>
         </StyledAboutWrapper>

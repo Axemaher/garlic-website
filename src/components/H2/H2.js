@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 const StyledH2 = styled.h2`
   font-size: 4em;
+  letter-spacing: 2px;
   padding: 0 10px 40px 10px;
   color: ${({ primaryColor, theme }) => primaryColor && theme.colors.fontPrimary};
 `;

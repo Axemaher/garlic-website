@@ -12,13 +12,8 @@ import { useStaticQuery, graphql } from "gatsby"
 
 const StyledSectionQualityTiles = styled(BackgroundImage)`
   padding: 100px 0 100px 0;
-  /* background-color: ${({ theme }) => theme.colors.sectionBackground3}; */
   text-align: center;
-  &::before, &::after{
-    filter: opacity(
-      ${({ lowOpacity }) => lowOpacity && '.1'}
-    )
-  }
+  color: ${({ theme }) => theme.colors.fontBright};
 `;
 
 const StyledTilesWrapper = styled.div`
@@ -43,7 +38,6 @@ const StyledTileImage = styled.img`
 `;
 
 const StyledTile = styled.div`
-  /* background-color: ${({ theme }) => theme.colors.qualityTilesBackground}; */
   width: 200px;
   height: 200px;
   margin: 15px;
@@ -68,7 +62,7 @@ const QualityTiles = () => {
 
   const data = useStaticQuery(graphql`
   query {
-    descriptionBG: file(relativePath: { eq: "sectionBG1.jpg" }) {
+    sectionBG: file(relativePath: { eq: "sectionBG2.jpg" }) {
       childImageSharp {
         fluid(quality: 100) {
           ...GatsbyImageSharpFluid_withWebp
@@ -78,10 +72,10 @@ const QualityTiles = () => {
   }
 `)
 
-  const homeBG = data.descriptionBG.childImageSharp.fluid
+  const sectionBG = data.sectionBG.childImageSharp.fluid
 
   return (
-    <StyledSectionQualityTiles fluid={homeBG} lowOpacity>
+    <StyledSectionQualityTiles fluid={sectionBG} lowOpacity>
       <H2>KUPUJĄC U NAS MASZ GWARANCJĘ</H2>
       <StyledTilesWrapper>
         <StyledTile>

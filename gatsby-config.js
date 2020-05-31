@@ -1,8 +1,9 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby `,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Czosnek24h `,
+    description: `Sprzedaż czosnku w hurtowych ilościach, dojazd do klienta, towar najwyższej jakości.`,
+    author: `Czosnek24h`,
+    siteUrl: 'https://czosnek24h.pl',
     menuLinks: [
       {
         name: 'Home',
@@ -36,13 +37,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Czosnek24h`,
+        short_name: `Czosnek24h`,
         start_url: `/`,
         background_color: `#663399`,
-        theme_color: `#663399`,
+        theme_color: `rgb(146, 49, 89)`,
         display: `minimal-ui`,
-        // icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/icons/logoIco.png`, // This path is relative to the root of the site.
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
@@ -59,6 +60,26 @@ module.exports = {
         ],
         display: 'swap'
       }
-    }
+    },
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: `dky8pootj60q`,
+        // Learn about environment variables: https://gatsby.dev/env-vars
+        accessToken: `QOryMPDMlB1kQOkf1hSejmvhqEhTZn2db2hOzeL0Q5A`,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        policy: [{ userAgent: '*', allow: '/' }]
+      }
+    },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: ``,
+      },
+    },
   ],
 }
