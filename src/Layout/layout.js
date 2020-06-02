@@ -2,6 +2,7 @@ import React from 'react'
 import styled, { createGlobalStyle, ThemeProvider } from 'styled-components'
 import { theme } from '../utils/theme'
 import Menu from '../components/Menu/Menu'
+import FbChat from '../components/FbChat/FbChat'
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -31,6 +32,7 @@ const Layout = ({ children }) => (
     <>
       <GlobalStyle />
       <StyledWrapper>
+        <FbChat />
         <Menu />
         {children}
       </StyledWrapper>

@@ -4,7 +4,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import BackgroundImage from 'gatsby-background-image'
 
 const StyledSectionTables = styled.section`
-  padding: 100px 0 100px 0;
+  padding: 50px 0 100px 0;
   background-color: ${({ theme }) => theme.colors.sectionBackground1};
 `;
 
@@ -14,8 +14,9 @@ const StyledTablesWrapper = styled.div`
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    display: flex;
+    display: grid;
     justify-content: space-around;
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
   }
 `;
 
@@ -24,9 +25,11 @@ const StyledTable = styled.table`
   height: auto;
   max-width: 600px;
   padding: 10px;
-  margin: 10px auto;
+  margin: 0 auto;
   @media ${({ theme }) => theme.device.laptop}{
     max-width: 600px;
+  margin: 10px;
+
   }
 `;
 
@@ -80,28 +83,28 @@ const StyledIco = styled(BackgroundImage)`
 const Table = () => {
 
   const data = useStaticQuery(graphql`
-  query packagingAndPrices {
-    packagingAndPrices:   allContentfulProdukty {
-      edges {
-        node {
-          productName
-          offer {
-            garlicType
-            packageImage {
-              fluid(maxHeight: 120) {
-                base64
-                srcWebp
-                srcSetWebp
+    query packagingAndPrices {
+      packagingAndPrices:   allContentfulProdukty {
+        edges {
+          node {
+            productName
+            offer {
+              garlicType
+              packageImage {
+                fluid(maxHeight: 120) {
+                  base64
+                  srcWebp
+                  srcSetWebp
+                }
               }
+              packageDesc
+              price
             }
-            packageDesc
-            price
           }
         }
       }
     }
-  }
-`);
+  `);
 
 
   return (

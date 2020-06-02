@@ -2,11 +2,10 @@ import React from 'react'
 import styled from 'styled-components'
 import Layout from '../Layout/layout';
 import PageTitle from '../components/PageTitle/PageTitle'
-import { colors } from '../utils/colors'
 
 
 const StyledSectionContact = styled.section`
-  padding: 0 0 100px 0;
+  padding: 50px 0 100px 0;
   background-color: ${({ theme }) => theme.colors.sectionBackground1};
   text-align: center;
 `;
@@ -76,8 +75,8 @@ const StyledIframe = styled.iframe`
 const Contact = () => {
     return (
         <Layout>
+            <PageTitle>KONTAKT</PageTitle>
             <StyledSectionContact>
-                <PageTitle colorFilter={colors.fontPrimary}>KONTAKT</PageTitle>
                 <StyledContactWrapper>
                     <StyledInformations>
                         <StyledH3>Skontaktuj się z nami</StyledH3>

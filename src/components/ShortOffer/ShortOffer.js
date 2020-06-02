@@ -1,71 +1,66 @@
-import React from 'react'
+import React from "react"
 import styled from 'styled-components'
-import H2 from '../H2/H2'
 import { useStaticQuery, graphql } from "gatsby"
-import BackgroundImage from 'gatsby-background-image'
-import Button from '../Button/Button'
+import Img from "gatsby-image"
+import H2 from '../H2/H2'
 
-const StyledSectionShortOffer = styled.section`
-  padding: 100px 0 100px 0;
-  background-color: ${({ theme }) => theme.colors.sectionBackground2};
+const StyledSectionOffer = styled.section`
+  padding: 50px 0 100px 0;
+  background-color: ${({ theme }) => theme.colors.sectionBackground3};
   text-align: center;
 `;
 
 const StyledOfferWrapper = styled.div`
-  max-width: 1200px;
-  width: 100%;
-  margin: 0 auto;
-  @media ${({ theme }) => theme.device.tablet}{
-    display: flex;
+  display: block;
+  @media ${({ theme }) => theme.device.laptop}{
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
     justify-content: space-around;
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
   }
 `;
 
-const StyledOfferElementWithBackground = styled(BackgroundImage)`
-  min-height: 200px;
-  background-position: center;
-  margin: 0 10px 30px 10px;
-  &::before, &::after{
-    filter: brightness(
-      ${({ darken }) => darken ? '60%' : '100%'}
-    )
-  }
-  @media ${({ theme }) => theme.device.tablet}{
-    width: 500px;
-  }
-`
-
-const StyledOfferDescriptionWrapper = styled.div`
-  padding: 10px;
-  background: linear-gradient(90deg, rgba(255,255,255,0.6) 72%, rgba(255,255,255,0) 100%);
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+const StyledOfferElement = styled.article`
+  margin: 10px auto;
+  background-color: white;
+  min-height: 300px;
   text-align: left;
+  padding: 10px;
+  max-width: 600px;
+  @media ${({ theme }) => theme.device.laptop}{
+    margin: 10px;
+  }
 `;
 
+const StyledDescription = styled.p`
+  font-size: 1.3em;
+`;
 
-const StyledOfferTitle = styled.span`
-  font-size: 2em;
-  font-weight: bold;
+const StyledName = styled.h3`
+  color: ${({ theme }) => theme.colors.fontPrimary};
   padding: 10px 0;
+  font-size: 2em;
 `;
 
-const StyledOfferDescription = styled.span`
-  font-size: 1.2em;
+const StyledImage = styled(Img)`
+  grid-area: image;
+  width: 100%;
+  height: 150px;
 `;
 
-const ShortOffer = () => {
+const ShortOffer = ({ sectionTitle }) => {
+
   const data = useStaticQuery(graphql`
-    query products {
-      products: allContentfulProdukty {
+    query shortOfferDescription {
+      shortOfferDescription: allContentfulProdukty {
         edges {
           node {
             productName
             productImage {
               fluid {
                 base64
-                tracedSVG
                 srcWebp
                 srcSetWebp
               }
@@ -78,21 +73,20 @@ const ShortOffer = () => {
       }
     }
   `);
+
   return (
-    <StyledSectionShortOffer>
-      <H2>NAJLEPSZE PRODUKTY</H2>
+    <StyledSectionOffer>
+      <H2>{sectionTitle}</H2>
       <StyledOfferWrapper>
-        {data.products.edges.map((el, i) =>
-          <StyledOfferElementWithBackground key={i} fluid={el.node.productImage.fluid} >
-            <StyledOfferDescriptionWrapper>
-              <StyledOfferTitle>{el.node.productName}</StyledOfferTitle>
-              <StyledOfferDescription>{el.node.productDesc.productDesc}</StyledOfferDescription>
-              <Button primary="true" big="true" to={'/offer'}>zobacz więcej</Button>
-            </StyledOfferDescriptionWrapper>
-          </StyledOfferElementWithBackground>
+        {data.shortOfferDescription.edges.map(el =>
+          <StyledOfferElement>
+            <StyledImage fluid={el.node.productImage.fluid} />
+            <StyledName>{el.node.productName}</StyledName>
+            <StyledDescription>{el.node.productDesc.productDesc}</StyledDescription>
+          </StyledOfferElement>
         )}
       </StyledOfferWrapper>
-    </StyledSectionShortOffer>
+    </StyledSectionOffer>
   );
 }
 

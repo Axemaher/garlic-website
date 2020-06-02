@@ -3,18 +3,6 @@ import styled from 'styled-components'
 import BackgroundImage from 'gatsby-background-image'
 import { useStaticQuery, graphql } from "gatsby"
 
-const StyledPageTitleWrapper = styled.div`
-  width: 100%;
-  height: 130px;
-  margin-bottom: 50px;
-  background-color: ${({ colorFilter }) => colorFilter};
-  letter-spacing: 5px;
-  @media ${({ theme }) => theme.device.tablet}{
-    height: 230px;
-    margin-bottom: 50px;
-  }
-`;
-
 const StyledPageTitleWithBackground = styled(BackgroundImage)`
   width: 100%;
   height: 130px;
@@ -22,14 +10,8 @@ const StyledPageTitleWithBackground = styled(BackgroundImage)`
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  /* &::before, &::after{
-    filter: opacity(
-      ${({ darken }) => darken ? '60%' : '.2'}
-    )
-  } */
   @media ${({ theme }) => theme.device.tablet}{
     height: 230px;
-    margin-bottom: 50px;
   }
 `;
 
@@ -58,11 +40,9 @@ const PageTitle = ({ children, colorFilter }) => {
 
 
   return (
-    <StyledPageTitleWrapper colorFilter={colorFilter}>
-      <StyledPageTitleWithBackground fluid={titleBG}>
-        <StyledPageTitle>{children}</StyledPageTitle>
-      </StyledPageTitleWithBackground>
-    </StyledPageTitleWrapper>
+    <StyledPageTitleWithBackground fluid={titleBG}>
+      <StyledPageTitle>{children}</StyledPageTitle>
+    </StyledPageTitleWithBackground>
   );
 }
 

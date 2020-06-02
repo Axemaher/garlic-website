@@ -77,7 +77,7 @@ const IndexPage = () => {
           <Button to={'/contact'}>skontaktuj się</Button>
         </StyledLinkGroup>
       </StyledSectionWithBackground>
-      <ShortOffer />
+      <ShortOffer sectionTitle={"SPRAWDŹ NASZE PRODUKTY"} />
       <DescriptionTiles />
     </Layout>
   )

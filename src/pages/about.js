@@ -7,8 +7,9 @@ import QualityTiles from '../components/QualityTiles/QualityTiles'
 import PageTitle from '../components/PageTitle/PageTitle'
 import { colors } from '../utils/colors'
 
+
 const StyledSectionAbout = styled.section`
-  padding: 0 0 100px 0;
+  padding: 50px 0 100px 0;
   background-color: ${({ theme }) => theme.colors.sectionBackground1};
   text-align: center;
 `;
@@ -64,8 +65,8 @@ const AboutPage = () => {
 
   return (
     <Layout>
+      <PageTitle>O NAS</PageTitle>
       <StyledSectionAbout>
-        <PageTitle colorFilter={colors.fontPrimary}>O NAS</PageTitle>
         <StyledAboutWrapper>
           <StyledImage fluid={aboutImage} />
           <StyledDescriptionWrapper>
