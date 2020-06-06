@@ -18,6 +18,10 @@ module.exports = {
         link: '/offer'
       },
       {
+        name: 'Galeria',
+        link: '/gallery'
+      },
+      {
         name: 'Kontakt',
         link: '/contact'
       },
@@ -81,5 +85,6 @@ module.exports = {
         trackingId: ``,
       },
     },
+    `gatsby-plugin-sitemap`,
   ],
 }

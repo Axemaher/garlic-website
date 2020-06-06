@@ -105,7 +105,7 @@ const Table = () => {
       }
     }
   `);
-
+  console.log(data)
 
   return (
     <StyledSectionTables>
@@ -124,7 +124,7 @@ const Table = () => {
                     <StyledIco fluid={offer.packageImage.fluid} />
                   </StyledTdFirst>
                   <StyledTd>{offer.packageDesc}</StyledTd>
-                  <StyledTdLast>{offer.price.toFixed(2)}</StyledTdLast>
+                  <StyledTdLast>{offer.price === null ? "na zapytanie" : offer.price.toFixed(2)}</StyledTdLast>
                 </StyledTr>
               )}
 

@@ -3,6 +3,7 @@ import styled, { createGlobalStyle, ThemeProvider } from 'styled-components'
 import { theme } from '../utils/theme'
 import Menu from '../components/Menu/Menu'
 import FbChat from '../components/FbChat/FbChat'
+import SimpleReactLightbox from 'simple-react-lightbox'
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -28,16 +29,18 @@ const StyledWrapper = styled.div`
 `;
 
 const Layout = ({ children }) => (
-  <ThemeProvider theme={theme}>
-    <>
-      <GlobalStyle />
-      <StyledWrapper>
-        <FbChat />
-        <Menu />
-        {children}
-      </StyledWrapper>
-    </>
-  </ThemeProvider>
+  <SimpleReactLightbox>
+    <ThemeProvider theme={theme}>
+      <>
+        <GlobalStyle />
+        <StyledWrapper>
+          <FbChat />
+          <Menu />
+          {children}
+        </StyledWrapper>
+      </>
+    </ThemeProvider>
+  </SimpleReactLightbox>
 )
 
 export default Layout

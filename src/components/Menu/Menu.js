@@ -53,7 +53,7 @@ const StyledNavGroup = styled.ul`
 `;
 
 const StyledNavElement = styled.li`
-    padding: 20px;
+    padding: 10px;
     @media ${({ theme }) => theme.device.tablet} {
         padding: 0 10px;
     } 

@@ -78,7 +78,7 @@ const ShortOffer = ({ sectionTitle }) => {
     <StyledSectionOffer>
       <H2>{sectionTitle}</H2>
       <StyledOfferWrapper>
-        {data.shortOfferDescription.edges.map(el =>
+        {data.shortOfferDescription.edges.map((el, i) =>
           <StyledOfferElement>
             <StyledImage fluid={el.node.productImage.fluid} />
             <StyledName>{el.node.productName}</StyledName>

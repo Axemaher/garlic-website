@@ -85,7 +85,7 @@ const DescriptionTiles = () => {
       <StyledTilesWrapper>
 
         <StyledTile>
-          <StyledTileImage src={Dinner} />
+          <StyledTileImage src={Dinner} alt="dinner-ico" />
           <StyledTileDescriptionWrapper>
             <StyledTileTitle>Do potraw</StyledTileTitle>
             <StyledTileDescription>
@@ -95,7 +95,7 @@ const DescriptionTiles = () => {
         </StyledTile>
 
         <StyledTile>
-          <StyledTileImage src={Growth} />
+          <StyledTileImage src={Growth} alt="growth-ico" />
           <StyledTileDescriptionWrapper>
             <StyledTileTitle>Wysokiej jakości</StyledTileTitle>
             <StyledTileDescription>
@@ -105,7 +105,7 @@ const DescriptionTiles = () => {
         </StyledTile>
 
         <StyledTile>
-          <StyledTileImage src={Heart} />
+          <StyledTileImage src={Heart} alt="heart-ico" />
           <StyledTileDescriptionWrapper>
             <StyledTileTitle>Zdrowy</StyledTileTitle>
             <StyledTileDescription>
@@ -115,7 +115,7 @@ const DescriptionTiles = () => {
         </StyledTile>
 
         <StyledTile>
-          <StyledTileImage src={Nose} />
+          <StyledTileImage src={Nose} alt="nose-ico" />
           <StyledTileDescriptionWrapper>
             <StyledTileTitle>Aromat</StyledTileTitle>
             <StyledTileDescription>
@@ -125,7 +125,7 @@ const DescriptionTiles = () => {
         </StyledTile>
 
         <StyledTile>
-          <StyledTileImage src={Plaster} />
+          <StyledTileImage src={Plaster} alt="plaster-ico" />
           <StyledTileDescriptionWrapper>
             <StyledTileTitle>Bez uszkodzeń</StyledTileTitle>
             <StyledTileDescription>
@@ -135,7 +135,7 @@ const DescriptionTiles = () => {
         </StyledTile>
 
         <StyledTile>
-          <StyledTileImage src={Water} />
+          <StyledTileImage src={Water} alt="water-ico" />
           <StyledTileDescriptionWrapper>
             <StyledTileTitle>Czysty</StyledTileTitle>
             <StyledTileDescription>

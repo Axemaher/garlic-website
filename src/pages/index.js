@@ -6,6 +6,9 @@ import { useStaticQuery, graphql } from "gatsby"
 import ShortOffer from '../components/ShortOffer/ShortOffer'
 import Button from '../components/Button/Button'
 import DescriptionTiles from '../components/DescriptionTiles/DescriptionTiles'
+import { Helmet } from 'react-helmet'
+import { JsonLd } from '../components/JsonLd'
+
 
 const StyledSectionWithBackground = styled(BackgroundImage)`
   display: flex;
@@ -64,6 +67,46 @@ const IndexPage = () => {
   const homeBG = data.homeBG.childImageSharp.fluid
   return (
     <Layout>
+      <Helmet>
+        <title>czosnek24h - zawsze świeży czosnek</title>
+        <description>Sprzedaż czosnku, dowóz do klienta, możliwa wysyłka, zawsze świeży, wysokie stany magazynowe</description>
+        <JsonLd>
+          {{
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "czosnek24h",
+            "image": "https://czosnek24h.pl/static/7be0859d54ed7047af07933bae52c23a/b17c1/about.jpg",
+            "@id": "",
+            "url": "https://czosnek24h.pl",
+            "telephone": "517 546 201",
+            "priceRange": "$$",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Mostowa",
+              "addressLocality": "Latowicz",
+              "postalCode": "05-334",
+              "addressCountry": "PL"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": 52.0204178,
+              "longitude": 21.788654
+            },
+            "openingHoursSpecification": {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": [
+                "Tuesday",
+                "Monday",
+                "Thursday",
+                "Wednesday",
+                "Friday"
+              ],
+              "opens": "08:00",
+              "closes": "18:00"
+            }
+          }}
+        </JsonLd>
+      </Helmet>
       <StyledSectionWithBackground fluid={homeBG} darken="true">
         <StyledH1>CZOSNEK NAJWYŻSZEJ JAKOŚCI</StyledH1>
         <StyledHomeInfoGroup>
