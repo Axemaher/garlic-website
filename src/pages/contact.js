@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Layout from '../Layout/layout';
 import PageTitle from '../components/PageTitle/PageTitle'
+import { Helmet } from 'react-helmet'
 
 
 const StyledSectionContact = styled.section`
@@ -75,6 +76,14 @@ const StyledIframe = styled.iframe`
 const Contact = () => {
     return (
         <Layout>
+            <Helmet>
+                <title>Sprzedaż czosnku - hurtowa i detaliczna | Wysoka jakość | Dostawa</title>
+                <meta
+                    name="description"
+                    content="Najwyższej jakości świeży czosnek, czysty i aromatyczny. Dostępny w hurtowych ilościach i różnych opakowaniach. Zamów z dostawą już dziś!"
+                />
+
+            </Helmet>
             <PageTitle>KONTAKT</PageTitle>
             <StyledSectionContact>
                 <StyledContactWrapper>

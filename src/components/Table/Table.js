@@ -105,7 +105,6 @@ const Table = () => {
       }
     }
   `);
-  console.log(data)
 
   return (
     <StyledSectionTables>

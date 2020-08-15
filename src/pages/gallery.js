@@ -5,6 +5,7 @@ import PageTitle from '../components/PageTitle/PageTitle'
 import { SRLWrapper } from 'simple-react-lightbox'
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
+import { Helmet } from 'react-helmet'
 
 
 const StyledSectionGallery = styled.section`
@@ -47,6 +48,13 @@ const GalleryPage = () => {
   `);
     return (
         <Layout>
+            <Helmet>
+                <title>Sprzedaż czosnku - hurtowa i detaliczna | Wysoka jakość | Dostawa</title>
+                <meta
+                    name="description"
+                    content="Najwyższej jakości świeży czosnek, czysty i aromatyczny. Dostępny w hurtowych ilościach i różnych opakowaniach. Zamów z dostawą już dziś!"
+                />
+            </Helmet>
             <PageTitle>GALERIA</PageTitle>
             <StyledSectionGallery>
                 <SRLWrapper>

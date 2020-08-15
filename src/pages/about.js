@@ -6,7 +6,7 @@ import Img from "gatsby-image"
 import QualityTiles from '../components/QualityTiles/QualityTiles'
 import PageTitle from '../components/PageTitle/PageTitle'
 import { Helmet } from 'react-helmet'
-import { JsonLd } from '../components/JsonLd'
+// import { JsonLd } from '../components/JsonLd'
 
 const StyledSectionAbout = styled.section`
   padding: 50px 0 100px 0;
@@ -66,32 +66,37 @@ const AboutPage = () => {
   return (
     <Layout>
       <Helmet>
-        <title>czosnek24h - zawsze świeży czosnek</title>
-        <description>Sprzedaż czosnku, dowóz do klienta, możliwa wysyłka, zawsze świeży, wysokie stany magazynowe</description>
-        <JsonLd>
-          {{
-            "@context": "https://schema.org",
-            "@type": "NewsArticle",
-            "mainEntityOfPage": {
-              "@type": "WebPage",
-              "@id": "https://czosnek24h.pl/about"
-            },
-            "headline": "O nas",
-            "image": "https://czosnek24h.pl/static/7be0859d54ed7047af07933bae52c23a/b17c1/about.jpg",
-            "author": {
-              "@type": "Person",
-              "name": "czosnek24h"
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": "czosnek24h",
-              "logo": {
-                "@type": "ImageObject",
-                "url": "https://czosnek24h.pl/static/addfe24ab606c60b34f7f17d9c9622bf/ee2a3/logoIco.png"
-              }
+        <title>Sprzedaż czosnku - hurtowa i detaliczna | Wysoka jakość | Dostawa</title>
+        <meta
+          name="description"
+          content="Najwyższej jakości świeży czosnek, czysty i aromatyczny. Dostępny w hurtowych ilościach i różnych opakowaniach. Zamów z dostawą już dziś!"
+        />
+        <script type="application/ld+json">
+          {`
+        {
+          "@context": "https://schema.org",
+          "@type": "NewsArticle",
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://czosnek24h.pl/about"
+          },
+          "headline": "O nas",
+          "image": "https://czosnek24h.pl/static/7be0859d54ed7047af07933bae52c23a/b17c1/about.jpg",
+          "author": {
+            "@type": "Person",
+            "name": "czosnek24h"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "czosnek24h",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://czosnek24h.pl/static/addfe24ab606c60b34f7f17d9c9622bf/ee2a3/logoIco.png"
             }
-          }}
-        </JsonLd>
+          }
+        }
+      `}
+        </script>
       </Helmet>
       <PageTitle>O NAS</PageTitle>
       <StyledSectionAbout>

@@ -7,7 +7,6 @@ import { colors } from '../../utils/colors'
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 import window from 'global'
-// import Logo from '../../images/logo.png'
 
 const StyledMenuWrapper = styled.header`
     z-index: 2;
@@ -147,7 +146,6 @@ const Menu = () => {
       }
     }
   `)
-    console.log(data)
     return (
         <StyledMenuWrapper open={open}>
             <MenuButton handleOpen={setOpen} open={open}></MenuButton>

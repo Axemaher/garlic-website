@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 import H2 from '../H2/H2'
+import { Link } from "gatsby"
 
 const StyledSectionOffer = styled.section`
   padding: 50px 0 100px 0;
@@ -44,6 +45,11 @@ const StyledName = styled.h3`
   font-size: 2em;
 `;
 
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: ${({ theme }) => theme.colors.fontPrimary};
+`;
+
 const StyledImage = styled(Img)`
   grid-area: image;
   width: 100%;
@@ -79,9 +85,9 @@ const ShortOffer = ({ sectionTitle }) => {
       <H2>{sectionTitle}</H2>
       <StyledOfferWrapper>
         {data.shortOfferDescription.edges.map((el, i) =>
-          <StyledOfferElement>
+          <StyledOfferElement key={i}>
             <StyledImage fluid={el.node.productImage.fluid} />
-            <StyledName>{el.node.productName}</StyledName>
+            <StyledName><StyledLink to="/offer">{el.node.productName}</StyledLink></StyledName>
             <StyledDescription>{el.node.productDesc.productDesc}</StyledDescription>
           </StyledOfferElement>
         )}
